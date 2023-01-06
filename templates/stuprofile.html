@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      
+      .topnav {
+        overflow: hidden;
+        background-color: #333;
+      }
+      
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+      
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+      
+      .topnav a.active {
+        background-color: red;
+        color: white;
+      }
+      </style>
+</head>
+<body>
+  <h1>My Profile</h1>
+  <div class="topnav">
+    <a href="{% url 'Stuhome' %}">Home</a>
+    <a class="active" href="{% url 'viewstupro' %}">Profile</a>
+    <a href="{% url 'Mycourseslist' %}">My Courses</a>
+    <a href="{% url 'viewprogress' %}">Progress Report</a>
+    <div style="float:right">
+    <a href="{% url 'logout' %}"><button>Logout</button></a></div>
+  </div>
+  <button type="submit"><a href="{% url 'Stuproadd' %}">Update Profile</a></button>
+  <ul>
+    {% for i in profile %}
+    <li><a href="{% url 'Stuprofedit' i.id %}">Edit</a></li>
+    <li>{{i.name}}</li>
+    <li>{{i.dOB}}</li>
+    <li>{{i.address}}</li>
+    <li>{{i.place}}</li>
+    <li>{{i.city}}</li>
+    <li>{{i.state}}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
